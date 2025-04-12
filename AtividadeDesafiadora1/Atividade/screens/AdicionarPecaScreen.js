@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
 export default function AdicionarPecaScreen({ route, navigation }) {
-  const { adicionarPeca } = route.params;
+  const { adicionarPeca } = route.params;// Recebe a função da tela anterior
 
   const [nome, setNome] = useState('');
   const [codigo, setCodigo] = useState('');
   const [quantidade, setQuantidade] = useState('');
 
+   // Salva a nova peça
   const salvarPeca = () => {
     if (!nome || !codigo || !quantidade) {
       Alert.alert('Erro', 'Preencha todos os campos.');
@@ -20,8 +21,8 @@ export default function AdicionarPecaScreen({ route, navigation }) {
       quantidade: parseInt(quantidade)
     };
 
-    adicionarPeca(novaPeca);
-    navigation.goBack();
+    adicionarPeca(novaPeca);// Adiciona a peça no array de estoque
+    navigation.goBack();// Volta para a tela anterior
   };
 
   return (

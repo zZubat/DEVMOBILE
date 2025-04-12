@@ -2,21 +2,24 @@ import React, { useState } from 'react';
 import { View, Text, FlatList, Button, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default function EstoqueScreen({ navigation }) {
+  // Estado inicial do estoque, com algumas peças simuladas
   const [estoque, setEstoque] = useState([
     { nome: 'Parafuso', codigo: '001', quantidade: 100 },
     { nome: 'Porca', codigo: '002', quantidade: 200 },
     { nome: 'Arruela', codigo: '003', quantidade: 150 }
   ]);
 
+   // Função que atualiza a quantidade de uma peça com base no código
   const atualizarQuantidade = (codigo, novaQuantidade) => {
     const novoEstoque = estoque.map(item =>
       item.codigo === codigo ? { ...item, quantidade: novaQuantidade } : item
     );
-    setEstoque(novoEstoque);
+    setEstoque(novoEstoque);// Atualiza o estado do estoque
   };
 
+  // Função que adiciona uma nova peça ao estoque
   const adicionarPeca = novaPeca => {
-    setEstoque([...estoque, novaPeca]);
+    setEstoque([...estoque, novaPeca]);// Adiciona a nova peça no final da lista
   };
 
   return (
@@ -37,8 +40,8 @@ export default function EstoqueScreen({ navigation }) {
               style={styles.botaoEditar}
               onPress={() =>
                 navigation.navigate('EditarPeca', {
-                  peca: item,
-                  atualizarQuantidade
+                  peca: item,// Envia a peça atual como parâmetro
+                  atualizarQuantidade// Envia a função para atualizar
                 })
               }
             >
@@ -52,7 +55,7 @@ export default function EstoqueScreen({ navigation }) {
         title="Adicionar Nova Peça"
         onPress={() =>
           navigation.navigate('AdicionarPeca', {
-            adicionarPeca
+            adicionarPeca// Passa a função para adicionar uma nova peça
           })
         }
       />

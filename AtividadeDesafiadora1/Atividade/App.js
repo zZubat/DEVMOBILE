@@ -11,8 +11,9 @@ import AppNavigator from './navigation/AppNavigator';
 
 export default function App() {
   return (
+    // Envolve a navegação com NavigationContainer
     <NavigationContainer>
-      <AppNavigator />
+      <AppNavigator /> {/* Carrega a pilha de telas definida no AppNavigator.js */}
     </NavigationContainer>
   );
 }

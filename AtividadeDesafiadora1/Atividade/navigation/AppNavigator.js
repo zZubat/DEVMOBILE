@@ -6,6 +6,7 @@ import EstoqueScreen from '../screens/EstoqueItem';
 import AdicionarPecaScreen from '../screens/AdicionarPecaScreen';
 import EditarPecaScreen from '../screens/EditarPecaScreen';
 
+// Cria o objeto da navegação tipo stack
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {

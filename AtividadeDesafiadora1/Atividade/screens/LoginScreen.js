@@ -5,23 +5,28 @@ export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [senha, setSenha] = useState('');
 
+   // Função que simula autenticação
   const autenticar = () => {
     if (username === 'admin' && senha === '1234') {
-      navigation.navigate('Estoque');
+      navigation.navigate('Estoque');// Se as credenciais forem válidas, vai pra tela de Estoque
     } else {
-      Alert.alert('Erro', 'Usuário ou senha inválidos.');
+      Alert.alert('Erro', 'Usuário ou senha inválidos.');// Senha ou usuário incorretos
     }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Login</Text>
+
+      {/* Campo de usuário */}
       <TextInput
         placeholder="Usuário"
         style={styles.input}
         value={username}
         onChangeText={setUsername}
       />
+
+      {/* Campo de senha */}
       <TextInput
         placeholder="Senha"
         secureTextEntry
@@ -30,6 +35,8 @@ export default function LoginScreen({ navigation }) {
         onChangeText={setSenha}
       />
       <Button title="Entrar" onPress={autenticar} />
+
+      {/* Link para recuperar senha */}
       <TouchableOpacity onPress={() => navigation.navigate('RecuperacaoSenha')}>
         <Text style={styles.link}>Esqueceu a senha?</Text>
       </TouchableOpacity>

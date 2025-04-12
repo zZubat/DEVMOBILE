@@ -5,6 +5,7 @@ export default function RecuperacaoSenhaScreen({ navigation }) {
   const [usuario, setUsuario] = useState('');
   const [novaSenha, setNovaSenha] = useState(null);
 
+  // Simula recuperação de senha
   const recuperarSenha = () => {
     setNovaSenha('1234'); // simulação de nova senha
   };
@@ -19,6 +20,7 @@ export default function RecuperacaoSenhaScreen({ navigation }) {
         onChangeText={setUsuario}
       />
       <Button title="Recuperar" onPress={recuperarSenha} />
+      {/* Mostra a nova senha se existir */}
       {novaSenha && <Text style={styles.senha}>Nova senha: {novaSenha}</Text>}
       <Button title="Voltar ao Login" onPress={() => navigation.navigate('Login')} />
     </View>

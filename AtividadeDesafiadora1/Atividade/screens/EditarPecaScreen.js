@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
 export default function EditarPecaScreen({ route, navigation }) {
-  const { peca, atualizarQuantidade } = route.params;
-  const [quantidade, setQuantidade] = useState(String(peca.quantidade));
+  const { peca, atualizarQuantidade } = route.params;// Recebe a peça e a função de atualizar
+  const [quantidade, setQuantidade] = useState(String(peca.quantidade));// Inicializa com o valor atual
 
+    // Atualiza a quantidade e volta pra tela anterior
   const salvarAlteracoes = () => {
     const novaQtd = parseInt(quantidade);
     if (isNaN(novaQtd)) {
