@@ -7,53 +7,54 @@ import styles from "./styles";
 StatusBar.setBarStyle("dark-content");
 
 // Define áreas do mapa com coordenadas e estilos
-const ipaPolygon = {
+const restaurantesPolygon  = {
   coordinates: [
-    { latitude: 43.8486744, longitude: -79.0695283 },
-    { latitude: 43.8537168, longitude: -79.0700046 },
-    { latitude: 43.8518394, longitude: -79.0725697 },
-    { latitude: 43.8481651, longitude: -79.0716377 },
-    { latitude: 43.8486744, longitude: -79.0695283 },
+    { latitude: -22.012333, longitude: -47.888639 },
+    { latitude: -22.015222, longitude: -47.883861 },
+    { latitude: -22.016889, longitude: -47.888528 },
+    { latitude: -22.016333, longitude: -47.873556 },
+    { latitude: -21.996944, longitude: -47.797278 },
+    { latitude: -22.012333, longitude: -47.888639 }
   ],
   strokeColor: "coral",
   strokeWidth: 4,
 };
 
-const stoutPolygon = {
+const baresPolygon  = {
   coordinates: [
-    { latitude: 43.8486744, longitude: -79.0693283 },
-    { latitude: 43.8517168, longitude: -79.0710046 },
-    { latitude: 43.8518394, longitude: -79.0715697 },
-    { latitude: 43.8491651, longitude: -79.0716377 },
-    { latitude: 43.8486744, longitude: -79.0693283 },
+    { latitude: -22.017944, longitude: -47.900611 },
+    { latitude: -22.018778, longitude: -47.900500 },
+    { latitude: -22.016306, longitude: -47.873500 },
+    { latitude: -22.015611, longitude: -47.871278 },
+    { latitude: -22.017944, longitude: -47.900611 }
   ],
   strokeColor: "firebrick",
   strokeWidth: 4,
 };
 
 export default function PlottingOverlays() {
-  const [ipaStyles, setIpaStyles] = useState([styles.ipaText, styles.boldText]);
-  const [stoutStyles, setStoutStyles] = useState([styles.stoutText]);
-  const [visibleOverlays, setVisibleOverlays] = useState([ipaPolygon]); // Começa com a região IPA
+  const [restaurantesStyles, setRestaurantesStyles] = useState([styles.ipaText, styles.boldText]);
+  const [baresStyles, setBaresStyles] = useState([styles.stoutText]);
+  const [visibleOverlays, setVisibleOverlays] = useState([restaurantesPolygon]); // Começa com a região IPA
 
-  function onClickIpa() {
-    setIpaStyles([styles.ipaText, styles.boldText]);
-    setStoutStyles([styles.stoutText]);
-    setVisibleOverlays([ipaPolygon]);
+  function onClickRestaurantes() {
+    setRestaurantesStyles([styles.ipaText, styles.boldText]);
+    setBaresStyles([styles.stoutText]);
+    setVisibleOverlays([restaurantesPolygon]);
   }
 
-  function onClickStout() {
-    setStoutStyles([styles.stoutText, styles.boldText]);
-    setIpaStyles([styles.ipaText]);
-    setVisibleOverlays([stoutPolygon]);
+  function onClickBares() {
+    setBaresStyles([styles.stoutText, styles.boldText]);
+    setRestaurantesStyles([styles.ipaText]);
+    setVisibleOverlays([baresPolygon]);
   }
 
   return (
     <View style={styles.container}>
       {/* Títulos clicáveis */}
       <View>
-        <Text style={ipaStyles} onPress={onClickIpa}>IPA Fans</Text>
-        <Text style={stoutStyles} onPress={onClickStout}>Stout Fans</Text>
+        <Text style={restaurantesStyles} onPress={onClickRestaurantes}>Restaurantes</Text>
+        <Text style={baresStyles} onPress={onClickBares}>Bares</Text>
       </View>
 
       {/* Mapa com polígonos visíveis */}
